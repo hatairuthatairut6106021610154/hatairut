@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html>
+<head>   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-image:url( im/88.jpg) ; top: center;width:100%; margin:0 auto ;        
+  padding: 2px;
+  text-align: center;
+  color: rgb(22, 18, 18) ;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 50px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: rgba(40, 179, 44, 0.479);
+  color: white;
+}
+#navbar a.active1 {
+  background-color: rgb(60, 156, 64);
+  color: white;
+}
+#navbar a.active2 {
+  background-color: rgba(40, 179, 44, 0.479);
+  color: white;
+}
+#navbar a.active3 {
+  background-color: rgb(60, 156, 64);
+  color: white;
+}
+#navbar a.active4 {
+  background-color:  rgba(40, 179, 44, 0.479);
+  color: white;
+}
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+ 
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative ;
+  text-align : center;
+  
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #080808;
+  font-size: 30px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+form.example input[type=text] {
+    padding: 9.5px;
+    font-size: 22px;
+    border: 2px solid rgb(252, 255, 255);
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 9px;
+    background: #2196F3;
+    color: white;
+    font-size: 22px;
+    border: 2px solid #2196F3;
+    border-left: none;
+    cursor: pointer;
+    
+}
+
+form.example button:hover {
+    background: #0b7dda;
+    
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.glow {
+  font-size: 44px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+  @-webkit-keyframes glow {
+  from {
+     text-shadow: 0 0 10px Orange, 0 0 20px 
+Orange, 0 0 30px 
+Orange, 0 0 40px 
+Orange, 0 0 50px 
+Orange, 0 0 60px 
+Orange, 0 0 70px
+Orange;
+  }
+  to {
+    text-shadow: 0 0 20px green, 0 0 30px green, 0 0 40px green, 0 0 50px green, 0 0 60px green, 0 0 70px green, 0 0 80px green
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header"    style="text-indent :6.2em ;" >
+
+<img  src="im/ex2.png"  style="width:24%" > <h4 class="glow" style="text-indent :1.5em ;"   >WELCOME TO WEBSIDE FOR SOMEONE WHO LOVE SHOES</h4>
+  
+</div>
+
+<div id="navbar">
+  <a class="active"  href="home1.html">HOME</a>
+  <a class="active1" href= "home2.html">CHOOSE BRAND </a>
+  <a class="active2" href="contect.html">CONTACT WITH OUR </a>
+  <a class="active3" href="fromm.html">LOGIN</a>
+  <a class="active4" href=" fromm2.html">REGISTER</a>
+  <a class="active3" href=" support.html">SUPPORT OF OUR </a>
+ 
+
+ <form style="text-indent: 9.5em;" class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+    <input type="text" placeholder="Search.." name="search2">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+
+</div>
+
+  
+  
+<h4 style="text-align:center"> SHOW EX BRAND OF OUR </h4>
+
+<div class="container">
+  <div class="mySlides">
+  <h2><div class="numbertext">1 / 6</div>
+    <img src="im/adidas.jpg"  style="width:30%">
+  </div> </h2> 
+
+  <div class="mySlides">
+    <h2><div class="numbertext">2 / 6</div>
+    <img src="im/bo.jpg"  style="width:30%">
+  </div></h2> 
+
+  <div class="mySlides">
+    <h2>  <div class="numbertext">3 / 6</div>
+    <img src="im/1.jpg"   style="width:30%">
+  </div></h2> 
+    
+  <div class="mySlides">
+    <h2>  <div class="numbertext">4 / 6</div>
+    <img src="im/21.jpg"   style="width:30%">
+  </div></h2> 
+
+  <div class="mySlides">
+    <h2>  <div class="numbertext">5 / 6</div>
+    <img src="im/222.jpg"  style="width:30%">
+  </div></h2> 
+    
+  <div class="mySlides">
+    <h2>  <div class="numbertext">6 / 6</div>
+    <img src="im/54.jpg"  style="width:30%">
+  </div></h2> 
+  <a class="prev" onclick="plusSlides(1)">❯</a>
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="im/adidas.jpg" style="width:100%" onclick="currentSlide(1)" alt=" CONVERSE">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="im/bo.jpg"   style="width:100%" onclick="currentSlide(2)" alt=" ADIDAS ">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="im/im2/1.jpg"   style="width:100%" onclick="currentSlide(3)" alt="  NIKE ">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="im/im2/21.jpg"  style="width:100%" onclick="currentSlide(4)" alt=" KEDS ">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="im/im2/222.jpg"  style="width:100%" onclick="currentSlide(5)" alt=" SUPERGA ">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="im/im2/54.jpg"   style="width:100%" onclick="currentSlide(6)" alt=" DC ">
+    </div>
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+
+</body>
+</html>

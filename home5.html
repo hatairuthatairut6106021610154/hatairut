@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+		<meta name = "viewport"
+		content=" width = device-width,initial-scale = 1">
+		<style>
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+			.b{
+				color:white; /* สีของตัวอักษร */
+                              border:1px solid green; /* กรอบของปุ่ม */
+                              background-color:green ;/* สีพื้นของปุ่ม */
+                              font:8pt Tahoma; /* แบบอักษร */
+                              padding:3px; /* ช่องว่างระหว่างกรอบกับตัวอักษร */
+                              background-position:right;
+                              background-repeat:no-repeat;
+                               width:300px;
+                               height:50px ;
+                               text-align: center;
+                               font-size:12pt;
+                                
+
+			}
+		body{   margin:  0 ;
+			font-family:  Arial, Helvetica, sans-serif ;
+			
+		}
+		
+		.top-container{
+				background-color: #f1f1f1 ;
+				padding: 30px ;
+				text-align:  center ;
+		}
+		
+		.header{
+			padding: 10px 16px ;
+			background-image:url( im/88.jpg) ; top: center;width:100%; margin:0 auto ;   
+			color: #f1f1f1 ;
+		}
+		
+		.content{
+				padding: 16
+				px ;
+	
+		}
+		.sticky + .content
+		{
+	
+				padding-top: 102px ;
+	
+		}
+		.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+	}
+	
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		color: #f1f1f1;
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+	}
+	
+	#main {
+		position: absolute;
+		right: 0;
+		padding: 0 15px 0 0;
+	}
+	
+	@media screen and (max-height: 450px) {
+	  .sidenav {padding-top: 15px;}
+	  .sidenav a {font-size: 18px;}
+	}
+	#button3 {
+				background-color:rgb(45, 129, 47); /* à¸ªà¸µà¸‚à¸­à¸‡à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                 font:22pt Tahoma; /* à¹à¸šà¸šà¸­à¸±à¸à¸©à¸£ */
+                padding:6px; /* à¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸£à¸­à¸šà¸à¸±à¸šà¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                background-position:right;
+                background-repeat:no-repeat;
+				width:300px;
+            	 height:50px ;
+                 text-align: center;
+                 font-size:18pt;
+            	color: rgb(245, 239, 239) ;
+
+              }
+		</style>
+		</head>
+		<body>
+	
+			<div class="header" id = "my">
+				<h2>
+					<div  id="main" > 
+						<span style="font-size:25px; cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+					</div> 
+					CHOOSE FORM NIKE  OF YOU 
+				</h2>
+
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<a href="#"> home </a>
+						<a href="#">Services</a>
+						<a href="#"> source</a>
+						<a href="#">Contact</a>
+						
+					</div>			
+			</div>
+		
+		
+	<script>
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "250px";
+	}
+	
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		document.getElementById("main").style.marginLeft= "0";
+	}
+	</script>
+	
+	
+	
+
+		
+		<fieldset>
+				<legend><h1>  NIKE </h1></legend>
+				<IMG SRC="im/1.jpg" ALIGN=LEFT width = "400">  <div style="text-indent :29.5em ;"><h2> รุ่น  Nike AirUltra 2.0 Essential </h2>
+                        <p   style="text-indent :20.5em ;"> <h3 style="text-indent :30.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >
+                            รองเท้าที่มาพร้อมการปรับโฉมโครงสร้างใหม่ ที่ลดน้ำหนักของรองเท้า แล้วยังเพิ่มการผสมผสานสีสันสดใสและวัสดุอีกมากมาย ระบบลดแรงกระแทก Ultra 2.0 มาพร้อมโฟมหนาแน่น
+                             2 ชั้นเพื่อการรองรับและความสบาย</center>
+                            
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :   4300    บาท </h3></center>
+
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+				
+			   </fieldset>
+	
+
+			   <fieldset>
+				<legend><h1> NIKE </h1></legend>
+				<IMG SRC="im/3l.png"  ALIGN=LEFT  width = "400">  <div style="text-indent :25.5em ;"><h2> รุ่น NIKE LUNARCHARGE ESSENTIAL  </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >
+                            รองเท้าที่ถูกสร้างมาเพื่อตอบสนองคนที่อยากมีฝีเท้าการเล่นฟุตบอลแบบลีโอเนล เมสซี่ ตัวรองเท้าฟุตบอลดีไซน์แบบพิเศษพร้อมชุดพื้นช่วงล่างและปุ่มรองเท้าแบบเฉพาะตัว นอกจากนั้นรองเท้ารุ่นนี้ได้ออกแบบโทนสีที่มีความจี๊ดจ๊าดโดดเด่นในเรื่อง 
+                            ที่มาในโทนสีเทาตัดกับสีเขียวอันแสบสัน ผนวกกับลายหนังรองเท้าที่เสริมให้ตัวรองเท้าดูมีมิติยิ่งขึ้น   </center>      </p>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :   6,500 บาท </h3></center>
+					<a href="\homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1>  NIKE </h1></legend>
+				<IMG SRC= "im/im2/4.jpg" ALIGN=LEFT   width = "400" >  <div style="text-indent :29.5em ;"><h2> รุ่น NIKE XVaporMax  Nisex  </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >
+                        รองเท้าที่จะทำให้คุณพร้อมก้าวเดินไปข้างหน้าด้วยสไตล์อันโดดเด่นที่มีดีไซน์เฉพาะตัว หน้าผ้าแบบตาข่าย 2 ชั้น ตกแต่งด้วยลายสามขีดลอยนูนขึ้นมาตัวรองเท้า และส้นเท้าแบบ heel cage อันเป็นจุดขายของรองเท้ารุ่นนี้ </center>   </p>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  : 3,500  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1>  NIKE  </h1></legend>
+				<IMG SRC="im/5.jpg" ALIGN=LEFT width = "500">  <div style="text-indent :24.5em ;"><h2> รุ่น  NIKE AIR Vapormax Flyknit  </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" > 
+                            สัมผัสการวิ่งที่สมบูรณ์แบบ จาก NIKE  ที่ช่วยรองรับแรงกระแทกได้เป็นอย่างดี ให้คุณสามารถวิ่งได้อย่างสบายมากกว่าเดิมในการเดินทางรวมถึงช่วยให้คุณเคลื่อนไหวได้อย่างคล่องแคล่ว     </p></center> 
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  3,080  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1>  NIKE </h1></legend>
+				<IMG SRC="im/6.jpg" ALIGN=LEFT width = "550">  <div style="text-indent :23.5em ;"><h2> รุ่น Original   NIKE  THEA JR  </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >
+                            มอบการควบคุมบอลอย่างสมบูรณ์แบบด้วยบูท สร้างมาเพื่อการเล่นที่พลิกแพลง ผสานนวัตกรรมพื้นผิว 3 มิติ ที่กระชับพอดีกับเท้า และรูปแบบการยึดเกาะรอบทิศทาง 360 องศา </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  4,500    บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1>  NIKE </h1></legend>
+				<IMG SRC="im/7.jpg" ALIGN=LEFT width = "500">  <div style="text-indent :24.5em ;"><h2> รุ่น NIKE AIR PRESTO MID UTILITY </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >
+                            เทคโนโลยีล้ำยุคของ Nike ผสานรูปทรงเรขาคณิตของพื้นรองเท้าด้านนอกแบบใหม่ทั้งหมด ที่ไม่เพียงแค่เพิ่มความยืดหยุ่นให้รองเท้าเท่านั้น แต่ยังขยายและหดตัวพร้อมๆ
+                             กับเท้าของคุณในทุกย่างก้าว สำหรับฝึกซ้อมวิ่ง  </p></div></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,900  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1>  NIKE  </h1></legend>
+				<IMG SRC="im/8.jpg" ALIGN=LEFT width = "500">  <div style="text-indent :28.5em ;"><h2> รุ่น   NIKE SOCK DART SE </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >
+                            คอลเล็กชั่นล่าสุด จากแบรนด์ฮอตที่มีสาวกอยู่ทั่วโลกอย่าง  Nike  ซีรีส์ของ รองเท้าผ้าใบ ที่แฝงนวัตกรรมความนุ่ม เบา สบายเท้า เสมือนย่ำอยู่บนอากาศ 
+                            ผสานกับดีไซน์ความล้ำ และเทคโนโลยีดีไซน์การระบายอากาศ พร้อมรองรับการออกวิ่งทั้งในตอนกลางวันและกลางคืน  </p></center> 
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  3,200 บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1>  NIKE   </h1></legend>
+				<IMG SRC="im/11.jpg" ALIGN=LEFT width = "500">  <div style="text-indent :27.5em ;"><h2> รุ่น NIKE AIR HUARACHE </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" > 
+                            รองเท้าที่นำเสนอความเท่ สะอาด คลาสสิค ให้สาวๆ สวมใส่ในลุคเท่ๆ สไตล์นักกีฬา จะเดินในระยะทางไกลเท่าไหร่ ก็ช่วยถนอมเท้าของคุณได้อย่างดีเยี่ยม</p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  3,190  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1>  NIKE  </h1></legend>
+				<IMG SRC="im/12.jpg" ALIGN=LEFT width = "500"  >  <div style="text-indent :16.5em ;"><h2> รุ่น  Nike Air Max Plus Tn Ultra 3  Men's Breathable Running   </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" > 
+                            รองเท้าที่นำระบบลดแรงกระแทกมาดีไซน์ใหม่ ด้วยส่วนบนที่ปรับโฉมใหม่ ดีไซน์ตาข่ายให้อยู่เหนือระบบลดแรงกระแทกที่ดีดตัวอย่างเบาสบายเพื่อความรู้สึกที่เหมือนกำลังท้าทายแรงโน้มถ่วง  </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  1,900 บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1>  NIKE   </h1></legend>
+				<IMG SRC="im/im2/14.jpg" ALIGN=LEFT width = "500">  <div style="text-indent :19.5em ;"><h2> รุ่น   NIKE AIR  ZOOM M ARIAH F LYKNIT RACER </h2>
+                        <p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >
+                            รองเท้าวิ่งรุ่นออริจินัลของ Nike ดีไซน์โดย Bill Bowerman และเปิดตัวในปี 1972 รุ่นนี้โดดเด่นด้วยส่วนบนจากไนลอน พร้อมการหุ้มชั้นนอกด้วยหนังกลับ 
+                            เพื่อสัมผัสที่เบาสบายและสไตล์แบบย้อนยุค    </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  3,700  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+			   <button class="open-button" onclick="openForm()">แจ้งปัญหาหรือติดต่อเรา</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+</script><br><br><br>
+
+<center><a   href="home2.html"><input     type="button" id="button3"  value=" back home  " />
+</a></center><br>
+
+</body>
+</html>

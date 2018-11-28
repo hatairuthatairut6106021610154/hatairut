@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+		<meta name = "viewport"
+		content=" width = device-width,initial-scale = 1">
+		<style>
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+			.b{
+				color:white; /* à¸ªà¸µà¸‚à¸­à¸‡à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                              border:1px solid green; /* à¸à¸£à¸­à¸šà¸‚à¸­à¸‡à¸›à¸¸à¹ˆà¸¡ */
+                              background-color:green ;/* à¸ªà¸µà¸žà¸·à¹‰à¸™à¸‚à¸­à¸‡à¸›à¸¸à¹ˆà¸¡ */
+                              font:8pt Tahoma; /* à¹à¸šà¸šà¸­à¸±à¸à¸©à¸£ */
+                              padding:3px; /* à¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸£à¸­à¸šà¸à¸±à¸šà¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                              background-position:right;
+                              background-repeat:no-repeat;
+                               width:300px;
+                               height:50px ;
+                               text-align: center;
+                               font-size:12pt;
+                                
+
+			}
+		body{   margin:  0 ;
+			font-family:  Arial, Helvetica, sans-serif ;
+   
+		}
+		
+		.top-container{
+				background-color: #f1f1f1 ;
+				padding: 30px ;
+				text-align:  center ;
+		}
+		
+		.header{
+			padding: 10px 16px ;
+			background-image:url( im/88.jpg) ; top: center;width:100%; margin:0 auto ;  
+			color: #f1f1f1 ;
+		}
+		
+		.content{
+				padding: 16
+				px ;
+	
+		}
+		.sticky + .content
+		{
+	
+				padding-top: 102px ;
+	
+		}
+	.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+	}
+	
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		color: #f1f1f1;
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+	}
+	
+	#main {
+		position: absolute;
+		right: 0;
+		padding: 0 15px 0 0;
+	}
+	
+	@media screen and (max-height: 450px) {
+	  .sidenav {padding-top: 15px;}
+	  .sidenav a {font-size: 18px;}
+	}
+	#button3 {
+                color:rgb(20, 18, 18); /* à¸ªà¸µà¸‚à¸­à¸‡à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                 font:22pt Tahoma; /* à¹à¸šà¸šà¸­à¸±à¸à¸©à¸£ */
+                padding:6px; /* à¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸£à¸­à¸šà¸à¸±à¸šà¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                background-position:right;
+                background-repeat:no-repeat;
+				width:300px;
+            	 height:50px ;
+                 text-align: center;
+                 font-size:18pt;
+            	color: rgb(34, 28, 28) ;
+
+			  }
+			  * {
+    box-sizing: border-box;
+}
+
+.zoom {
+    padding: 50px;
+   
+    transition: transform .2s;
+    width: 400px;
+   
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+   
+		</style>
+		</head>
+		<body>
+	
+			<div class="header" id = "my">
+				<h2>
+					<div  id="main" > 
+						<span style="font-size:25px; cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+					</div> 
+					CHOOSE PAYMENT BANK OF YOU   
+				</h2>
+
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<a href="index.html"> home </a>
+						<a href="#">Services</a>
+						<a href="#"> source</a>
+						<a href="#">Contact</a>
+						
+					</div>			
+			</div>
+		
+	<script>
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("main").style.marginRight = "250px";
+	}
+	
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		document.getElementById("main").style.marginRight= "0";
+	}
+  </script><br><br>
+
+
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <center><img src="im/b1.jpg "   style="width:35%"></center>
+        <div class="container">
+          <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที </p>
+          <p><button class="button"> กดชำระเงิน  </button></p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="column">
+      <div class="card">
+      <center> <img src="im/b2.jpg "  style="width:50%"  ></center> 
+        <div class="container">
+        <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที </p>  
+          <p><button class="button"> กดชำระเงิน </button></p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <center><img src="im/b6.jpg "  style="width:66%"></center>
+        <div class="container">
+         <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที</p>
+         <p><button class="button">กดชำระเงิน</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+      <div class="card">
+        <center><img src="im/b4.jpg "  style="width:66%"></center>
+        <div class="container">
+         <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที</p>
+         <p><button class="button">กดชำระเงิน</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+      <div class="card">
+      <center><img src="im/b5.jpg " style="width:72%"></center>  
+        <div class="container">
+         <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที</p>
+         <p><button class="button">กดชำระเงิน</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+      <div class="card">
+      <center>  <img src="im/49.jpg "  style="width:34%"></center>
+        <div class="container">
+         <p font-size = "30">หากลูกค้าชำระเงินแล้วทางร้านรบกวนแจ้งยอดการโอน,วันที่โอนพร้อมเลข order ผ่านทางอีเมล์ทางร้านและหากมีปัญหาให้ติดต่อทางร้านทั้งที</p>
+         <p><button class="button">กดชำระเงิน</button></p>
+        </div>
+      </div>
+    </div>
+  </div><br><br>
+  
+  <hr width="1200" align ="center" size="3"  >
+ <marquee direction="down"> <center ><h1 > THANKYOU. I’ll keep my fingers crossed!</h1></center></marquee>
+  <hr width="1200" align ="center" size="3"  >
+
+
+</body>
+</html>
+
+

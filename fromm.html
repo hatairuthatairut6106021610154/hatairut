@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style >
+html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.bg-img {
+    /* The image used */
+    background-image: url("im/102.jpg");
+    min-height: 455px;
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+	}
+	
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		
+        color: #f1f1f1;   
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+	}
+	#main {
+		transition: margin-left .5s;
+		position: absolute;
+		right: 0;
+		padding: 0 15px 0 0;
+	}
+	.header{
+			padding: 10px 16px ;
+			background-image:url( im/88.jpg) ; top: center;width:100%; margin:0 auto  ;        
+			color: #f1f1f1 ;
+		}
+        * {
+  box-sizing: border-box;
+}
+
+/* style the container */
+.container {
+  position: relative;
+  border-radius: 5px;
+  padding: 20px 0 75px 0;
+  text-shadow: 1px 1px rgb(12, 0, 0);
+  background-color: rgb(201, 194, 194);
+  border: 1px solid black;
+} 
+
+/* style inputs and link buttons */
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+  background-color: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #55ACEE;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+
+/* style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Two-column layout */
+.col {
+  float: left;
+  width: 50%;
+  margin: auto;
+  padding: 0 50px;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* vertical line */
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #ddd;
+  height: 175px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+  display: none;
+}
+
+/* bottom container */
+.bottom-container {
+  text-align: center;
+  background-color: rgb(105, 100, 100);
+  border-radius: 0px 0px 4px 4px;
+  text-shadow: 1px 1px rgb(12, 0, 0);
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+  /* hide the vertical line */
+  .vl {
+    display: none;
+  }
+  /* show the hidden text on small screens */
+  .hide-md-lg {
+    display: block;
+    text-align: center;
+  }
+}
+body{
+  background-image:url( im/ho.jpg) ; top: center;width:100%; margin:0 auto  ;   
+}
+
+#button3 {
+				background-color:rgb(140, 150, 140); /* à¸ªà¸µà¸‚à¸­à¸‡à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                 font:22pt Tahoma; /* à¹à¸šà¸šà¸­à¸±à¸à¸©à¸£ */
+                padding:6px; /* à¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸£à¸­à¸šà¸à¸±à¸šà¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                background-position:right;
+                background-repeat:no-repeat;
+				        width:300px;
+            	 height:50px ;
+                 text-align: center;
+                 font-size:18pt;
+            	color: rgb(245, 239, 239) ;
+
+
+              }
+</style>
+
+</head>
+<body>
+
+    <div class="header" id = "my">
+        <h2>
+            <div  id="main" > 
+                <span style="font-size:25px; cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+            </div> 
+            Login Your Data
+        </h2>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="index.html"> home </a>
+                <a href="#">Services</a>
+                <a href="#"> source</a>
+                <a href="#">Contact</a>
+                
+            </div>		
+            <script>
+                    function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                    document.getElementById("main").style.marginLeft = "250px";
+                    }
+                    
+                    function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                    document.getElementById("main").style.marginLeft= "0";
+                    }
+                    </script>
+                        
+    </div><br><br><br><br>
+    
+    <div class="container">
+      <form action="/action_page.php">
+        <div class="row">
+          <h2 style="text-align:center">Login with Social Media or Manually</h2>
+          <div class="vl">
+            <span class="vl-innertext">or</span>
+          </div>
+    
+          <div class="col">
+            <a href="#" class="fb btn">
+              <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+             </a>
+            <a href="#" class="twitter btn">
+              <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+            </a>
+            <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+              </i> Login with Google+
+            </a>
+          </div>
+    
+          <div class="col">
+            <div class="hide-md-lg">
+              <p>Or sign in manually:</p>
+            </div>
+    
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+           <input  type="submit" value="Login" >
+          </div>
+          
+        </div>
+      </form>
+    </div>
+   
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="fromm2.html" style="color:white" class="btn">Sign up</a>
+         
+        </div>
+        <div class="col">
+          <a href="change.html" style="color:white" class="btn">Forgot password?</a>
+        </div>
+      </div>
+    </div><br><br><br>
+    <center><a   href="index.html"><input     type="button" id="button3"  value=" back home  " />
+    </a></center><br>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+		<meta name = "viewport"
+		content=" width = device-width,initial-scale = 1">
+		<style>
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+			.b{
+				color:white; /* สีของตัวอักษร */
+                              border:1px solid green; /* กรอบของปุ่ม */
+                              background-color:green ;/* สีพื้นของปุ่ม */
+                              font:8pt Tahoma; /* แบบอักษร */
+                              padding:3px; /* ช่องว่างระหว่างกรอบกับตัวอักษร */
+                              background-position:right;
+                              background-repeat:no-repeat;
+                               width:300px;
+                               height:50px ;
+                               text-align: center;
+                               font-size:12pt;
+                                
+
+			}
+		body{   margin:  0 ;
+			font-family:  Arial, Helvetica, sans-serif ;
+			
+		}
+		
+		.top-container{
+				background-color: #f1f1f1 ;
+				padding: 30px ;
+				text-align:  center ;
+		}
+		
+		.header{
+			padding: 10px 16px ;
+			background-image:url( im/88.jpg) ; top: center;width:100%; margin:0 auto ;        
+			color: #f1f1f1 ;
+		}
+		
+		.content{
+				padding: 16
+				px ;
+	
+		}
+		.sticky + .content
+		{
+	
+				padding-top: 102px ;
+	
+		}
+		.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+	}
+	
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		color: #f1f1f1;
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+	}
+	#main {
+		transition: margin-left .5s;
+		position: absolute;
+		right: 0;
+		padding: 0 15px 0 0;
+	}
+	
+	@media screen and (max-height: 450px) {
+	  .sidenav {padding-top: 15px;}
+	  .sidenav a {font-size: 18px;}
+	}
+	#button3 {
+				background-color:rgb(45, 129, 47); /* à¸ªà¸µà¸‚à¸­à¸‡à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                 font:22pt Tahoma; /* à¹à¸šà¸šà¸­à¸±à¸à¸©à¸£ */
+                padding:6px; /* à¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸£à¸­à¸šà¸à¸±à¸šà¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£ */
+                background-position:right;
+                background-repeat:no-repeat;
+				width:300px;
+            	 height:50px ;
+                 text-align: center;
+                 font-size:18pt;
+            	color: rgb(245, 239, 239) ;
+
+			  }
+		
+		</style>
+		</head>
+		<body>
+	
+			<div class="header" id = "my">
+				<h2>
+					<div  id="main" > 
+						<span style="font-size:25px; cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+					</div> 
+					CHOOSE FORM  CONVERSE OF YOU 
+				</h2>
+
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<a href="#"> home </a>
+						<a href="#">Services</a>
+						<a href="#"> source</a>
+						<a href="#">Contact</a>
+						
+					</div>			
+			</div>
+		
+	<script>
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "250px";
+	}
+	
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		document.getElementById("main").style.marginLeft= "0";
+	}
+	</script>
+	
+	
+	
+
+		
+		<fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/adidas.jpg" ALIGN=LEFT >  <div style="text-indent :14.5em ;"><h2> รุ่น CONVERSE ONE STAR NEW HERITAGE LEATHER WHITE </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" > เตรียมพบกับคอลเลคชั่นใหม่ (Summer 2018) ของ Converse "One Star"<br > <center  style="text-indent :10.5em ;" > โมเดลที่ถือกำเนิดขึ้นในปี 1974 (หรือเมื่อ 44 ปีที่แล้ว) ซึ่งกลายเป็นไอคอนของ "นักสเกตบอร์ด"<br ><center  style="text-indent :10.5em ;" >  และไอเท็มประจำกายของ
+							 "Kurt Cobain" ราชาแห่งกรันจ์ผู้ล่วงลับ<br ><center  style="text-indent :10.5em ;" > โดยคอลเลคชั่นใหม่นี้จะมีทั้งรุ่น One Star "New Heritage" (Leather), One Star (Canvas)<br ><center  style="text-indent :10.5em ;" > 
+							  สำหรับสาวๆ และ One Star "Tropical Feet"สำหรับผู้ชาย   </p></div></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :   2,990    บาท </h3></center>
+
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+				
+			   </fieldset>
+	
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/320.jpg" ALIGN=LEFT>  <div style="text-indent :14.5em ;"><h2> รุ่น CONVERSE ONE STAR OX LIGHT BLUE TROPICAL FEET  </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" > CONVERSE ONE STAR OX LIGHT BLUE TROPICAL FEET <br>
+							<center  style="text-indent :10.5em ;" > เตรียมพบกับคอลเลคชั่นใหม่ (Summer 2018) ของ Converse "One Star" <br>
+								<center  style="text-indent :10.5em ;" > โมเดลที่ถือกำเนิดขึ้นในปี 1974 (หรือเมื่อ 44 ปีที่แล้ว) ซึ่งกลายเป็นไอคอนของ "นักสเกตบอร์ด"<br><center  style="text-indent :10.5em ;" >และไอเท็มประจำกายของ "Kurt Cobain"
+							  ราชาแห่งกรันจ์ผู้ล่วงลับ <br><center  style="text-indent :10.5em ;" >โดยคอลเลคชั่นใหม่นี้จะมีทั้งรุ่น One Star "New Heritage" (Leather), One Star (Canvas)<br><center  style="text-indent :10.5em ;" >สำหรับสาวๆ และ One Star     
+							    "Tropical Feet" สำหรับผู้ชาย    </center>      </p>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  : 2,890  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/1000.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น CONVERSE ALL STAR 70 HI BLUE </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >All Star 70’s โมเดลที่นำเอาความคลาสสิก และกลิ่นอายของรองเท้า
+							 Converse ในปี 1970 กลับมาโลดแล่นใหม่อีกครั้ง<br><center  style="text-indent :10.5em ;" >โดยยังคงรายละเอียดของทรงรองเท้า, ขอบยาง, เชือกรองเท้า, รูตาไก่ 
+							 และป้ายส้นแบบวินเทจไว้อย่างครบถ้วน     </center>   </p>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,990   บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/450.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE COURTLAND OX YELLOW  </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" > All Star 70’s โมเดลที่นำเอาความคลาสสิก และกลิ่นอายของรองเท้า
+							 Converse ในปี 1970 กลับมาโลดแล่นใหม่อีกครั้ง<br><center  style="text-indent :10.5em ;" >โดยยังคงรายละเอียดของทรงรองเท้า, ขอบยาง, เชือกรองเท้า, รูตาไก่ 
+							 และป้ายส้นแบบวินเทจไว้อย่างครบถ้วน        </p></center> 
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,190  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/356.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE X DR.WOO “CHUCK 70” BLACK  </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >Converse x Dr.Woo “CHUCK 70” โมเดล Collaboration 
+							สุดพิเศษจากการออกแบบของ Dr.Woo Tattoo <br> <center  style="text-indent :10.5em ;" >artist ชื่อดังจากเมือง Los Angelesโดยมาร่วมออกแบบลงบนโมเดล Chuck Taylor 70’s 
+							โดยตัวรองเท้าจะตกแต่ง<br><center  style="text-indent :10.5em ;" >ด้วยลวดลาย แมงมุม,ใยแมงมุม และแมลงวัน แบบ Minimalist ซึ่งเป็นงานที่ Dr.Woo ถนัด เพิ่มความพิเศษ<br><center  style="text-indent :10.5em ;" >ด้วยสัญลักษณ์ “ดวงตา”
+							 ที่บริเวณพื้นด้านนอกพร้อมทั้งรายละเอียด ที่เป็นเอกลักษณ์ของ Chuck Taylor 70’s <br><center  style="text-indent :10.5em ;" >ทั้งป้ายส้น, ขอบยาง, รูตาไก่ และทรงรองเท้า โดยจะมีด้วยกัน 2 สี 
+							 (Black และ White)      </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  8,990   บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/sf.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE ONE STAR OX BLUE </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >All Star 70’s โมเดลที่นำเอาความคลาสสิก และกลิ่นอายของรองเท้า Converse ในปี 1970 
+							กลับมาโลดแล่นใหม่อีกครั้ง <br><center  style="text-indent :10.5em ;" >โดยยังคงรายละเอียดของทรงรองเท้า, ขอบยาง, เชือกรองเท้า, รูตาไก่ และป้ายส้นแบบวินเทจไว้อย่างครบถ้วน      </p>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,900  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/gh.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE ALL STAR 70 HI PURPLE </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >All Star 70’s โมเดลที่นำเอาความคลาสสิก และกลิ่นอายของรองเท้า
+							 Converse ในปี 1970 กลับมาโลดแล่นใหม่อีกครั้ง<br><center  style="text-indent :10.5em ;" >โดยยังคงรายละเอียดของทรงรองเท้า, ขอบยาง, เชือกรองเท้า, รูตาไก่ และป้ายส้นแบบวินเทจไว้อย่างครบถ้วน    </p></center> 
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,990 บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/we.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE JACK PURCELL OX BLACK</h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3><center  style="text-indent :10.5em ;" >CONVERSE JACK PURCELL OX BLACK Converse All Star 70 HI BLACK <br><center  style="text-indent :10.5em ;" > การกลับมาของ All Star 70’s โมเดลที่นำเอาความคลาสสิก และกลิ่นอายของรองเท้า Converse ในปี 1970<br><center  style="text-indent :10.5em ;" > กลับมาโลดแล่นใหม่อีกครั้ง โดดเด่นด้วยลวดลาย Camo บริเวณใต้ตราสัญลักษณ์ดาวที่เป็นเอกลักษณ์ <br><center  style="text-indent :10.5em ;" >โดยยังคงรายละเอียดของทรงรองเท้า, ขอบยาง,
+							 เชือกรองเท้า, รูตาไก่ และป้ายส้นแบบวินเทจไว้อย่างครบถ้วน <br><center  style="text-indent :10.5em ;" >โดยจะมาในทรง HI (หุ้มข้อ) พร้อมพื้นยางที่ช่วยเพิ่มประสิทธิภาพในการยึดเกาะได้อย่างยอดเยี่ยม     </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  3,190  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/pe.jpg" ALIGN=LEFT>  <div style="text-indent :24.5em ;"><h2> รุ่น ALL STAR HI WHITE PINSTRIPE  </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >Converse Chuck Taylor All Star “Converse Pinstripe” คอลเลคชั่นใหม่ล่าสุดของ Chuck Taylor All Star โมเดลสุดคลาสสิก
+							<br><center  style="text-indent :10.5em ;" > ที่มาพร้อมลาย Pinstripe ที่บริเวณขอบยางข้างรองเท้า โดยจะมีด้วยกัน 2 รุ่นคือ Hi-Top (หุ้มข้อ) สีขาว และ OX (ข้อต่ำ) สีดำ    </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  2,400  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า " /></center>
+					  </a>
+			   </fieldset>
+
+
+			   <fieldset>
+				<legend><h1> CONVERSE </h1></legend>
+				<IMG SRC="im/or.jpg" ALIGN=LEFT>  <div style="text-indent :20.5em ;"><h2> รุ่น  CONVERSE PRO-LEATHER SUEDE OX  </h2>
+						<p   style="text-indent :15.5em ;"> <h3 style="text-indent :28.5em ;"> ลายละเอียด </h3> <center  style="text-indent :10.5em ;" >โมเดลใหม่ล่าสุดจาก Converse Japan ซีรี่ส์การผลิตสุดร้อนแรงจากประเทศญี่ปุ่น<br><center  style="text-indent :10.5em ;" >ที่ได้นำเอาโมเดลสุดคลาสสิกอย่าง Pro-Leather มาชุบชีวิตใหม่อีกครั้ง ด้วยวัสดุหนังกลับ (Suede) สีส้มสุดจี๊ด <br><center  style="text-indent :10.5em ;" >โดยยังคงเอกลักษณ์ของลวดลาย “CHEVRON & STAR” 
+							ไว้อย่างครบถ้วน รวมถึงป้ายลิ้นรองเท้าแบบวินเทจ<br><center  style="text-indent :10.5em ;" > และแพ็คเกจกล่องสีฟ้าที่แฟนๆ Converse ไม่ควรพลาด      </p></center>
+				
+				</div>
+
+				<p style="text-indent :31.5em ;"><strong >กรุณาเลือกขนาดสินค้า</strong></p>
+				 <center style="text-indent :11.5em ;"><select > <option  value="American"> 5.5 us</option> 
+					<option value="Andean"> 6.5 us</option> <option value="Chilean"> 7.5 us</option> 
+					<option value="Greater"> 8.5 us</option> <option value="James's"> 9.5 us </option> 
+					<option value="Lesser"> 10.5 us </option> </select></center>
+					<center style="text-indent :10.5em ;"><h3>  ราคา  :  4,690  บาท </h3></center>
+					<a href="homebank.html">
+							<center  style="text-indent :11.5em ;" ><input class = "b " type="button" id="button2"  value=" กดสั้งซื้อสินค้า  " /></center>
+					  </a>
+			   </fieldset>
+			   <button class="open-button" onclick="openForm()">แจ้งปัญหาหรือติดต่อเรา</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+</script><br><br><br>
+
+<center><a   href="home2.html"><input     type="button" id="button3"  value=" back home  " />
+</a></center><br>
+
+</body>
+</html>
+
+                  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                 
+                         
+                   
